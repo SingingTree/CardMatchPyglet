@@ -1,15 +1,33 @@
 import pyglet
 
 
-def draw_card():
+card_vertices = [
+    0, 0,
+    0, 1,
+    1, 1,
+    1, 0
+]
+
+
+def draw_card(window):
     pyglet.graphics.draw(4, pyglet.gl.GL_QUADS,
                          ('v2i',
-                          (10, 15,
-                           10, 35,
-                           20, 35,
-                           20, 15)
+                          (get_scaled_vertices(window))
                           )
                          )
+
+
+def get_scale(window):
+    return 100, 100  # Place holder
+
+
+def get_scaled_vertices(window):
+    scale = get_scale(window)
+    scaled_vertices = []
+    for i in range(0, len(card_vertices), 2):
+        scaled_vertices.append(card_vertices[i] * scale[0])
+        scaled_vertices.append(card_vertices[i + 1] * scale[1])
+    return scaled_vertices
 
 
 window = pyglet.window.Window()
@@ -28,7 +46,7 @@ label = pyglet.text.Label('Hello, world',
 def on_draw():
     window.clear()
     label.draw()
-    draw_card()
+    draw_card(window)
 
 
 pyglet.app.run()
