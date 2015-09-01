@@ -58,3 +58,4 @@ pyglet.app.run()
 
 This code asks Pyglet to start our application running. Pyglet handles a lot of complicated stuff to do with windows and graphics and all sorts of cool things, this is why we let it handle running of our application.
 
+At this point your code should look something like [this](https://github.com/SingingTree/CardMatchPyglet/blob/master/card_match_v1.py)!
