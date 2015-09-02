@@ -87,3 +87,5 @@ Next up we're going to draw a rectangle in the window. This is all setting the f
 In computer graphics you'll come across various coordinate systems. For Pyglet we work with on where the bottom left of the window is the origin. The origin is the point where the x coordinate is 0, and the y coordinate is 0. I'll typically use the notation (0,0) for this, meaning x = 0, followed by y = 0.
  
  As we move right across the window the x coordinate will increase, and as we move further up the window the y coordinate will increase. So the top right corner of the window is where x and y are both at their greatest. What the value of x and y are at this point is determined by how big the window is in pixels. So if our window is 800 (wide) by 600 pixels (high), the top right corner will be (800,600).
+ 
+ ![coordinate_example](https://github.com/SingingTree/CardMatchPyglet/blob/master/images/coordinate_example1.png "coordinate_example")
