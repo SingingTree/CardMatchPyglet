@@ -1,3 +1,15 @@
+# Table of Contents
+
+  * [Table of Contents](#table-of-contents)
+  * [Introduction](#introduction)
+  * [card\_match\_v1\.py](#card_match_v1py)
+    * [Installing Pyglet](#installing-pyglet)
+    * [Creating a Window](#creating-a-window)
+  * [card\_match\_v2\.py](#card_match_v2py)
+    * [Coordinates](#coordinates)
+
+
+
 # Introduction
 
 This is a tutorial that incrementally builds up a card matching game that uses Pyglet. Each section of the tutorial aims to build to a new concept, and each section will correspond to a Python program in the repo.
@@ -6,6 +18,8 @@ The sections will build upon one another, and code may be reworked from section 
 
 # card_match_v1.py
 
+We're going to get started by making a program that creates an empty window. Onward!
+
 ## Installing Pyglet
 
 Before we can get started programming, we need to make sure Pyglet is installed and that Python can use it. The Pyglet [download page](https://bitbucket.org/pyglet/pyglet/wiki/Download) details how to install Pyglet:
@@ -13,11 +27,11 @@ Before we can get started programming, we need to make sure Pyglet is installed 
 ```
 pip install pyglet
 ```
- 
+
 Pyglet has [online documentation](https://bitbucket.org/pyglet/pyglet/wiki/Documentation) in case you ever need more info on it, or are having trouble. If you're unsure on which version of the docs to use, you probably want the stable ones.
- 
+
 ## Creating a Window
- 
+
 To create a window in Pyglet we need to do a few things:
 
 First we need to import Pyglet:
@@ -63,3 +77,13 @@ At this point your code should look something like [this](https://github.com/Sin
 And the output should look like this:
 
 ![card_match_v1_screenshot1](https://github.com/SingingTree/CardMatchPyglet/blob/master/images/card_match_v1_screenshot1.png "card_match_v1")
+
+# card_match_v2.py
+
+Next up we're going to draw a rectangle in the window. This is all setting the foundation for drawing cards and other stuff. Let's go!
+
+## Coordinates
+
+In computer graphics you'll come across various coordinate systems. For Pyglet we work with on where the bottom left of the window is the origin. The origin is the point where the x coordinate is 0, and the y coordinate is 0. I'll typically use the notation (0,0) for this, meaning x = 0, followed by y = 0.
+ 
+ As we move right across the window the x coordinate will increase, and as we move further up the window the y coordinate will increase. So the top right corner of the window is where x and y are both at their greatest. What the value of x and y are at this point is determined by how big the window is in pixels. So if our window is 800 (wide) by 600 pixels (high), the top right corner will be (800,600).
