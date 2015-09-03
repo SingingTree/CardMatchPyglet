@@ -104,5 +104,52 @@ For Pyglet (and many other libraries) we'll store our vertices in a list. This l
 
 ## Drawing a Rectangle
 
-Armed with our knowledge from above we can get started on drawing a rectangle!
+Armed with our knowledge from above we can get started on drawing a rectangle! Let's start by writing a function which is going to return our vertices:
+
+```python
+def get_card_vertices():
+    card_width = 200
+    card_height = 200
+    card_vertices = [
+        0,          0,
+        0,          card_height,
+        card_width, card_height,
+        card_width, 0
+    ]
+    return card_vertices
+```
+
+So the `card_vertices` array contains x and y coordinates for 4 vertices, and I've split those to one set of x and y per line so it's readable. I could put them all on one line and it'd work the same, but I find it makes it hard to me to know which numbers belong to which vertex. We could potentially have this logic outside of a function, but having in a function will give us some flexibility later on, and I think it's just good style. So there.
+
+How do we use these vertices? We give them to Pyglet and tell it to draw stuff! This is probably the most complicated part thus far. Pyglet uses a library called OpenGL under the hood. OpenGl is pretty rad, I used to program in OpenGL for a living as a game dev. That said, OpenGL can get pretty freakin' complicated. I say this not to intimidate or humble brag (straight up brag: I'm pretty amazing), but to indicate that it's okay if you find stuff tricky or unintuitive.
+
+Anywho, we'll use the following to rectangle (card):
+
+```python
+def draw_card():
+    pyglet.graphics.draw(4,
+                         pyglet.gl.GL_QUADS,
+                         ('v2i', (get_card_vertices()))
+                         )
+```
+
+Breaking this down:
+
+- We're calling the `pyglet.graphics.draw` function to draw stuff and giving it a number of arguments.
+- The 1st argument is the number of vertices we're drawing.
+- The 2nd argument is the type of thing we're drawing. In this case `pyglet.gl.GL_QUADS means we're drawing a thing with 4 sides. All the GLs in there refer to OpenGL.
+- The 3rd argument is the vertex data, and is a tuple made up of two things:
+    - The first thing is a string saying what format our vertex data is in. `v2i` says our vertices are made up of 2 components, and those components are integers.
+    - The second thing is the actual numbers that make up our vertices.
+    
+And putting this all together with what we've already worked on, we can put this into the `on_draw` function for our window, so that it looks like this:
+
+```python
+@window.event
+def on_draw():
+    window.clear()
+    draw_card()
+```
+
+After which you should have a program that looks a little something like this](https://github.com/SingingTree/CardMatchPyglet/blob/master/card_match_v2.py)!
 
