@@ -151,5 +151,5 @@ def on_draw():
     draw_card()
 ```
 
-After which you should have a program that looks a little something like this](https://github.com/SingingTree/CardMatchPyglet/blob/master/card_match_v2.py)!
+After which you should have a program that looks a little something like [this](https://github.com/SingingTree/CardMatchPyglet/blob/master/card_match_v2.py)!
 
