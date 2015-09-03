@@ -86,6 +86,23 @@ Next up we're going to draw a rectangle in the window. This is all setting the f
 
 In computer graphics you'll come across various coordinate systems. For Pyglet we work with on where the bottom left of the window is the origin. The origin is the point where the x coordinate is 0, and the y coordinate is 0. I'll typically use the notation (0,0) for this, meaning x = 0, followed by y = 0.
  
- As we move right across the window the x coordinate will increase, and as we move further up the window the y coordinate will increase. So the top right corner of the window is where x and y are both at their greatest. What the value of x and y are at this point is determined by how big the window is in pixels. So if our window is 800 (wide) by 600 pixels (high), the top right corner will be (800,600).
+As we move right across the window the x coordinate will increase, and as we move further up the window the y coordinate will increase. So the top right corner of the window is where x and y are both at their greatest. What the value of x and y are at this point is determined by how big the window is in pixels. So if our window is 800 (wide) by 600 pixels (high), the top right corner will be (800,600).
  
- ![coordinate_example](https://github.com/SingingTree/CardMatchPyglet/blob/master/images/coordinate_example1.png "coordinate_example")
+![coordinate_example1](https://github.com/SingingTree/CardMatchPyglet/blob/master/images/coordinate_example1.png "coordinate_example1")
+
+## Vertices
+
+A **vertex** is like a point. But a vertex is a special kind of point at the edge of a shape. They plural of vertex is vertices: one vertex, to vertices.
+
+Anywho, the image below shows what I mean about vertices being a special kind of point. If we have a square, and we take points along it's edges, then we can find lots of points, but it's only points at the corners that are considered vertices!
+
+![vertices_example1](https://github.com/SingingTree/CardMatchPyglet/blob/master/images/vertices_example1.png "vertices_example1")
+
+So a vertex is just like a point, and you can represent it in the same way: two numbers, one for the x coordinate, and one for the y. Or if we were in three dimensions we'd have 3 numbers, but we're not worried about that in this tutorial!
+
+For Pyglet (and many other libraries) we'll store our vertices in a list. This list will just be a series of numbers, and each 2 numbers will make up a vertex. So if my list is [0, 10, 20, 20] then I have two vertices, the first is (0, 10) and the second is (20, 20).
+
+## Drawing a Rectangle
+
+Armed with our knowledge from above we can get started on drawing a rectangle!
+
