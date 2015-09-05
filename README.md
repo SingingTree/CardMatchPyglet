@@ -153,3 +153,27 @@ def on_draw():
 
 After which you should have a program that looks a little something like [this](https://github.com/SingingTree/CardMatchPyglet/blob/master/card_match_v2.py)!
 
+And the output should look like this:
+
+![card_match_v2_screenshot1](https://github.com/SingingTree/CardMatchPyglet/blob/master/images/card_match_v2_screenshot1.png "card_match_v2")
+
+# card_match_v3.py
+
+In this version of the code we're going to work on checking if a user has clicked within the card that we're drawing.
+
+## Checking for clicks
+
+First up we're going to write a function that processes mouse clicks. For now we're just going to print out a message when the user clicks anywhere in the window. To do this we're going to add a function:
+
+```python
+def on_mouse_press(x, y, button, modifiers):
+    print("Mouse Pressed")
+```
+
+The name of this function is important, because Pyglet uses the name to determine when to use it. Can then tell our Pyglet window to use this handler like so:
+
+```python
+window.push_handlers(on_mouse_press)
+```
+
+Add that code after you create the window but before the app starts running.
