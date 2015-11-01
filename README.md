@@ -85,9 +85,9 @@ Next up we're going to draw a rectangle in the window. This is all setting the f
 ## Coordinates
 
 In computer graphics you'll come across various coordinate systems. For Pyglet we work with on where the bottom left of the window is the origin. The origin is the point where the x coordinate is 0, and the y coordinate is 0. I'll typically use the notation (0,0) for this, meaning x = 0, followed by y = 0.
- 
+
 As we move right across the window the x coordinate will increase, and as we move further up the window the y coordinate will increase. So the top right corner of the window is where x and y are both at their greatest. What the value of x and y are at this point is determined by how big the window is in pixels. So if our window is 800 (wide) by 600 pixels (high), the top right corner will be (800,600).
- 
+
 ![coordinate_example1](https://github.com/SingingTree/CardMatchPyglet/blob/master/images/coordinate_example1.png "coordinate_example1")
 
 ## Vertices
@@ -141,7 +141,7 @@ Breaking this down:
 - The 3rd argument is the vertex data, and is a tuple made up of two things:
     - The first thing is a string saying what format our vertex data is in. `v2i` says our vertices are made up of 2 components, and those components are integers.
     - The second thing is the actual numbers that make up our vertices.
-    
+
 And putting this all together with what we've already worked on, we can put this into the `on_draw` function for our window, so that it looks like this:
 
 ```python
@@ -178,5 +178,15 @@ window.push_handlers(on_mouse_press)
 
 Add that code after you create the window but before the app starts running. The application will now print out "Mouse Pressed" whenever you click in the window. Neat, not wildly useful, but neat.
 
-The x and y arguments to `on_mouse_press` are the coordinates where the mouse was clicked within the window. We can use these values to control how clicks are treated. Which is to say, we could use these values to tell if a user is clicking on a card or not! And if so, which card.
+If you run the program from a terminal and click anywhere in the window, you should now see "Mouse Pressed" printed in the terminal, neat! However, we want to restrict the program to only do something when we click inside the card we're drawing. So let's do that! But first, some totally useful theory!
+
+## Making sure the graphics and clicks sync up
+
+It's a game's job to make sure that where the game thinks and object is, and where the game draws that object are the same. Or to phrase it another way, that the graphics system of the game and the physics system are in sync. There's no rules that say this have to be the case, so it's very possible to build a game where the objects are displayed somewhere, but you can interact with them somewhere else. However, it's probably not a good way to build a game, and it's not what we're going to do here.
+
+That said, since we're making this game it's our responsibility to make sure these things line up. Programming ahoy!
+
+## Checking for clicks inside a card
+
+The x and y arguments to `on_mouse_press` are used by Pyglet to store the x and y coordinates for where the mouse was clicked in the window. This means that if we want to make sure the click was inside a card, we have to make sure those coordinates are inside a card.
 
