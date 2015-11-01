@@ -176,4 +176,7 @@ The name of this function is important, because Pyglet uses the name to determin
 window.push_handlers(on_mouse_press)
 ```
 
-Add that code after you create the window but before the app starts running.
+Add that code after you create the window but before the app starts running. The application will now print out "Mouse Pressed" whenever you click in the window. Neat, not wildly useful, but neat.
+
+The x and y arguments to `on_mouse_press` are the coordinates where the mouse was clicked within the window. We can use these values to control how clicks are treated. Which is to say, we could use these values to tell if a user is clicking on a card or not! And if so, which card.
+
