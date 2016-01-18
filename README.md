@@ -190,3 +190,13 @@ That said, since we're making this game it's our responsibility to make sure the
 
 The x and y arguments to `on_mouse_press` are used by Pyglet to store the x and y coordinates for where the mouse was clicked in the window. This means that if we want to make sure the click was inside a card, we have to make sure those coordinates are inside a card.
 
+Let's start out simple, we're going to write a function to check to see if the clicks are inside the card we currently have drawing. We'll rework some of this code to make it a bit more versatile in the future, but for now we're going to do a a quick and easy check. Change the ```on_mouse_press``` to the following:
+
+```python
+def on_mouse_press(x, y, button, modifiers):
+    print("Mouse Pressed")
+    if x < 200 and y < 200:
+        print("Mouse inside card")
+    else:
+        print("Mouse outside card")
+```
