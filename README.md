@@ -200,3 +200,5 @@ def on_mouse_press(x, y, button, modifiers):
     else:
         print("Mouse outside card")
 ```
+
+Now we get the same message as before, but an another line saying if we clicked inside the drawn card or not. There's nothing making sure that the click check and the card actually line up, so if you go changing the values in the above function, or for the drawing of the card, you'll see you can click get inconsistent behaviour between what is drawn and how the clicks are handled.
