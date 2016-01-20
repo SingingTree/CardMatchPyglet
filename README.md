@@ -202,3 +202,42 @@ def on_mouse_press(x, y, button, modifiers):
 ```
 
 Now we get the same message as before, but an another line saying if we clicked inside the drawn card or not. There's nothing making sure that the click check and the card actually line up, so if you go changing the values in the above function, or for the drawing of the card, you'll see you can click get inconsistent behaviour between what is drawn and how the clicks are handled.
+
+## Consistent Width and Height
+
+Up until this point the values for the card height and width have been set to 200, as a literal (meaning we literally wrote 200) in the functions for both getting the card vertices, and for checking for clicks inside the cards. However, we can take steps to make sure that the same values are used inside both functions. First off let's create some new functions to get the width and height of our cards:
+
+```python
+def get_card_width():
+    return 200
+
+def get_card_height():
+    return 200
+```
+
+Now we can change ```get_card_vertices``` to look like this (the first two lines of the function change):
+
+```python
+def get_card_vertices():
+    card_width = get_card_width()
+    card_height = get_card_height()
+    card_vertices = [
+        0, 0,
+        0, card_height,
+        card_width, card_height,
+        card_width, 0
+    ]
+    return card_vertices
+```
+
+and ```on_mouse_press``` to look like this (the if line changes):
+
+```python
+def on_mouse_press(x, y, button, modifiers):
+    print("Mouse Pressed")
+    if x < get_card_width() and y < get_card_height():
+        print("Mouse inside card")
+    else:
+        print("Mouse outside card")
+```
+These changes make sure that whatever we return from our width and height functions, both the drawing and click checking will reflect that. If you want to give it a try, change the width and/or height in the get functions and see what happens.
