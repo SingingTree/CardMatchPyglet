@@ -241,3 +241,7 @@ def on_mouse_press(x, y, button, modifiers):
         print("Mouse outside card")
 ```
 These changes make sure that whatever we return from our width and height functions, both the drawing and click checking will reflect that. If you want to give it a try, change the width and/or height in the get functions and see what happens.
+
+# card_match_v4.py
+
+In this version we're going to look at drawing and detecting clicks in multiple, different cards.
