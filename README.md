@@ -245,3 +245,28 @@ These changes make sure that whatever we return from our width and height functi
 # card_match_v4.py
 
 In this version we're going to look at drawing and detecting clicks in multiple, different cards.
+
+# Window Size
+
+Up until now we've been creating a window with the default width and height, like this:
+
+```python
+window = pyglet.window.Window()
+```
+
+However, for this section it's useful if we make sure the window we create is a specific size. To do this we'll create a couple of functions to get the window width and height:
+
+```python
+def get_window_width():
+    return 600
+
+
+def get_window_height():
+    return 400
+```
+
+and when we create our window we'll use these functions to explicitly state the width and height:
+
+```python
+window = pyglet.window.Window(get_window_width(), get_window_height())
+```
