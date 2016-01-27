@@ -270,3 +270,20 @@ and when we create our window we'll use these functions to explicitly state the 
 ```python
 window = pyglet.window.Window(get_window_width(), get_window_height())
 ```
+
+# Drawing Multiple cards
+
+Let's update the drawing function to draw multiple cards. To do this we're going to update the ```get_card_vertices``` function to give us vertices at different positions. To this we're going to change it to take in some arguments for the bottom left position for a card:
+
+```python
+def get_card_vertices(left, bottom):
+    card_width = get_card_width()
+    card_height = get_card_height()
+    card_vertices = [
+        left, bottom,
+        left, bottom + card_height,
+        left + card_width, bottom + card_height,
+        left + card_width, bottom
+    ]
+    return card_vertices
+```
