@@ -287,3 +287,12 @@ def get_card_vertices(left, bottom):
     ]
     return card_vertices
 ```
+We'll also update the ```draw_card``` function in the same way:
+
+```python
+def draw_card(left, bottom):
+    pyglet.graphics.draw(4,
+                         pyglet.gl.GL_QUADS,
+                         ('v2i', (get_card_vertices(left, bottom)))
+                         )
+```
