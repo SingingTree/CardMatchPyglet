@@ -14,7 +14,7 @@
 
 This is a tutorial that incrementally builds up a card matching game that uses Pyglet. Each section of the tutorial aims to build to a new concept, and each section will correspond to a Python program in the repo.
 
-The sections will build upon one another, and code may be reworked from section to section.
+This tutorial expects a beginner experience with Python, and you should have some familiarity with classes. The hope is that new concepts should be kept to a minimum, and any new concepts should be researchable as you go. If you think anything could be made clearer/less complicated, please raise an issue.
 
 # card_match_v1.py
 
