@@ -271,6 +271,43 @@ and when we create our window we'll use these functions to explicitly state the 
 window = pyglet.window.Window(get_window_width(), get_window_height())
 ```
 
+# Creating a Card Class
+
+Up to this point we haven't been using classes, but for drawing multiple cards, as well as binding the logic of drawing and click handling together, we're going to create a card class.
+
+The class will be called ```Card```, and will have an ```__intit__``` as below:
+
+```python
+class Card:
+    def __init__(self, left, bottom, width, height):
+        self.left = left
+        self.bottom = bottom
+        self.width = width
+        self.height = height
+```
+
+We'll also rework our card drawing and code to belong in the card class and use the variables set on the class:
+
+```python
+class Card:
+    ...
+
+    def draw_card(self):
+        pyglet.graphics.draw(4,
+                             pyglet.gl.GL_QUADS,
+                             ('v2i', (self.get_card_vertices()))
+                             )
+
+    def get_card_vertices(self):
+        card_vertices = [
+            self.left, self.bottom,
+            self.left,self.bottom + self.height,
+            self.left + self.width, self.bottom + self.height,
+            self.left + self.width, self.bottom
+        ]
+        return card_vertices
+```
+
 # Drawing Multiple cards
 
 Let's update the drawing function to draw multiple cards. To do this we're going to update the ```get_card_vertices``` function to give us vertices at different positions. To this we're going to change it to take in some arguments for the bottom left position for a card:
