@@ -301,35 +301,24 @@ class Card:
     def get_card_vertices(self):
         card_vertices = [
             self.left, self.bottom,
-            self.left,self.bottom + self.height,
+            self.left, self.bottom + self.height,
             self.left + self.width, self.bottom + self.height,
             self.left + self.width, self.bottom
         ]
         return card_vertices
 ```
 
-# Drawing Multiple cards
-
-Let's update the drawing function to draw multiple cards. To do this we're going to update the ```get_card_vertices``` function to give us vertices at different positions. To this we're going to change it to take in some arguments for the bottom left position for a card:
+Now in order to have our program behave the same, we're going to make a couple more changes. First we need to create a card before we can draw it. So add this code just after we've created our window:
 
 ```python
-def get_card_vertices(left, bottom):
-    card_width = get_card_width()
-    card_height = get_card_height()
-    card_vertices = [
-        left, bottom,
-        left, bottom + card_height,
-        left + card_width, bottom + card_height,
-        left + card_width, bottom
-    ]
-    return card_vertices
+card = Card(0, 0, get_card_width(), get_card_height())
 ```
-We'll also update the ```draw_card``` function in the same way:
+
+and let's update the window drawing function, to look like this:
 
 ```python
-def draw_card(left, bottom):
-    pyglet.graphics.draw(4,
-                         pyglet.gl.GL_QUADS,
-                         ('v2i', (get_card_vertices(left, bottom)))
-                         )
+@window.event
+def on_draw():
+    window.clear()
+    card.draw_card()
 ```
