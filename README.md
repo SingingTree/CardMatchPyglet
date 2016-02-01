@@ -7,8 +7,16 @@
     * [Creating a Window](#creating-a-window)
   * [card\_match\_v2\.py](#card_match_v2py)
     * [Coordinates](#coordinates)
-
-
+    * [Vertices](#vertices)
+    * [Drawing a Rectangle](#drawing-a-rectangle)
+  * [card\_match\_v3\.py](#card_match_v3py)
+    * [Checking for clicks](#checking-for-clicks)
+    * [Making sure the graphics and clicks sync up](#making-sure-the-graphics-and-clicks-sync-up)
+    * [Checking for clicks inside a card](#checking-for-clicks-inside-a-card)
+    * [Consistent Width and Height](#consistent-width-and-height)
+  * [card\_match\_v4\.py](#card_match_v4py)
+  * [Window Size](#window-size)
+  * [Creating a Card Class](#creating-a-card-class)
 
 # Introduction
 
