@@ -15,8 +15,9 @@
     * [Checking for clicks inside a card](#checking-for-clicks-inside-a-card)
     * [Consistent Width and Height](#consistent-width-and-height)
   * [card\_match\_v4\.py](#card_match_v4py)
-  * [Window Size](#window-size)
-  * [Creating a Card Class](#creating-a-card-class)
+    * [Window Size](#window-size)
+    * [Creating a Card Class](#creating-a-card-class)
+
 
 # Introduction
 
@@ -254,7 +255,7 @@ These changes make sure that whatever we return from our width and height functi
 
 In this version we're going to look at drawing and detecting clicks in multiple, different cards.
 
-# Window Size
+## Window Size
 
 Up until now we've been creating a window with the default width and height, like this:
 
@@ -279,11 +280,11 @@ and when we create our window we'll use these functions to explicitly state the 
 window = pyglet.window.Window(get_window_width(), get_window_height())
 ```
 
-# Creating a Card Class
+## Creating a Card Class
 
 Up to this point we haven't been using classes, but for drawing multiple cards, as well as binding the logic of drawing and click handling together, we're going to create a card class.
 
-The class will be called ```Card```, and will have an ```__intit__``` as below:
+The class will be called ```Card```, and will have an ```__init__``` as below:
 
 ```python
 class Card:
@@ -316,10 +317,10 @@ class Card:
         return card_vertices
 ```
 
-Now in order to have our program behave the same, we're going to make a couple more changes. First we need to create a card before we can draw it. So add this code just after we've created our window:
+Now in order to have our program behave the same, we're going to make a couple more changes. First we need to create a card before we can draw it. Since we're going to have multiple cards, let's store our cards in a list! So add this code just after we've created our window:
 
 ```python
-card = Card(0, 0, get_card_width(), get_card_height())
+cards = [Card(0, 0, get_card_width(), get_card_height())]
 ```
 
 and let's update the window drawing function, to look like this:
@@ -328,5 +329,41 @@ and let's update the window drawing function, to look like this:
 @window.event
 def on_draw():
     window.clear()
-    card.draw_card()
+    for card in cards:
+        card.draw_card()
 ```
+
+Cool! So now our card is responsible for drawing itself. Now it needs to check for clicks. Let's make it happen! Add this code to our card class:
+
+```python
+def contains_point(self, point_x, point_y):
+    return (self.left < point_x < self.left + self.width and
+            self.bottom < point_y < self.bottom + self.height)
+```
+
+This code will take an x and a y coordinate and decide if the point made up of those coordinates are inside our card. This is done by making sure that the x of the point are further right than the left side of our card, and also further left than the right side of our card. If both those things are true then the point must be inside our card, at least in the x direction. We do the same thing with the y coordinates, and if all of the above hold then the point must be in the card.
+
+Now, let's update how the program is handling clicks, we'll update our `on_mouse_press` to look like this:
+
+```python
+def on_mouse_press(x, y, button, modifiers):
+    print("Mouse Pressed")
+    for i, card in enumerate(cards):
+        if card.contains_point(x, y):
+            print("Clicked inside card {}".format(i))
+```
+
+We've changed how our clicks are being handled: now each card gets to decided if it contains the click point, and if we detect a click in a card we're going to log which card in the list the click was in. Right now we only have one card in our list, but let have a look at how we can change that!
+
+Because of the excellent work we've done with our card class and supporting code, we can now create new cards and add them to our list of cards and the program will handle it! Neat! Let's update our card list code like this:
+
+```python
+cards = [Card(0, 0, get_card_width(), get_card_height()),
+         Card(get_card_width(), get_card_height(), get_card_width(), get_card_height())]
+```
+
+This sets up a second card in the upper right of the screen. This card starts at the top right corner of the card we already had. This is because we're setting the bottom left of our new card to `get_card_width` and `get_card_height`, which are the coordinates where our original card will be ending.
+
+If you run this program you should see something that looks like this:
+
+![card_match_v4_screenshot1](https://github.com/SingingTree/CardMatchPyglet/blob/master/images/card_match_v4_screenshot1.png "card_match_v4")
